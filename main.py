@@ -10,6 +10,7 @@ from missing_values import identify_missing_values, handle_missing_values
 from outliers import detect_outliers_iqr, detect_outliers_zscore, handle_outliers
 from assumptions import check_statistical_assumptions
 from feature_engineering import engineer_features
+from structural_contracts import run_structural_contracts_phase
 
 
 def main():
@@ -49,23 +50,30 @@ def main():
     
     # PHASE 7: Feature Engineering & Transformation
     print("\n>>> [PHASE 7] PREDICTIVE FEATURE ENGINEERING")
-    df_final = engineer_features(df_treated)
+    df_engineered = engineer_features(df_treated)
+    
+    # PHASE 8: Structural Contracts, Validation & Model-Ready Scaling
+    print("\n>>> [PHASE 8] STRUCTURAL CONTRACTS & MODEL-READY VALIDATION")
+    df_model_ready = run_structural_contracts_phase(
+        df_engineered, 
+        export_dataset=True, 
+        output_path="final_model_ready_dataset.csv"
+    )
     
     # Summary of Final Pipeline Output
     print("\n" + "=" * 80)
     print("[SUCCESS] DATA SCIENCE PIPELINE COMPLETED SUCCESSFULLY")
     print("=" * 80)
-    print(f"Final Processed Dataset Shape: {df_final.shape}")
-    print("\nSample Processed Records (First 5 rows):")
+    print(f"Final Model-Ready Dataset Shape: {df_model_ready.shape}")
+    print("\nSample Validated Records (First 5 rows):")
     display_cols = [
-        "OrderID", "Date", "Product", "TotalPrice", "CouponCode", "HasCoupon",
-        "Expected_Subtotal", "Discount_Amount", "Avg_Price_Per_Cart_Item", "Is_Weekend"
+        "OrderID", "Date", "Product", "TotalPrice", "CouponCode", "HasCoupon", "Order_Month"
     ]
-    avail_cols = [c for c in display_cols if c in df_final.columns]
-    print(df_final[avail_cols].head())
+    avail_cols = [c for c in display_cols if c in df_model_ready.columns]
+    print(df_model_ready[avail_cols].head())
     print("=" * 80)
     
-    return df_final
+    return df_model_ready
 
 
 if __name__ == "__main__":

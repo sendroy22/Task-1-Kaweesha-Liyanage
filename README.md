@@ -120,6 +120,132 @@ This document records the empirical results, statistical findings, and data tran
 
 ---
 
+---
+
+## 🛡️ Phase 8 (Project Phase 3): Structural Contracts, Data Quality & Scaling
+
+### 8.1 Data Quality & Structural Audit Results
+
+The final feature-engineered dataset was subjected to a rigorous data contract audit across all 43 attributes:
+
+| Audit Dimension | Evaluation Criterion | Observed Result | Status |
+| :--- | :--- | :--- | :--- |
+| **Dataset Dimensions** | Ingestion of complete feature set | `1,200` Rows $\times$ `43` Columns | ✅ Passed |
+| **Completeness** | Unexpected Missing / Null Values | `0` Nulls across all 43 columns ($0.00\%$) | ✅ Passed |
+| **Record Uniqueness** | Full-Row Duplication | `0` duplicate rows ($0.00\%$) | ✅ Passed |
+| **Transaction Uniqueness**| Primary Key (`OrderID`) Duplication | `0` duplicate keys ($0.00\%$) | ✅ Passed |
+| **Numerical Boundaries** | Impossible values (`Quantity`, `UnitPrice`, `ItemsInCart`) | `Quantity` $\in [1, 5]$, `UnitPrice` $> \$0$, `ItemsInCart` $\in [1, 10]$ | ✅ Passed |
+| **Target Non-Negativity** | Non-negative invoice values | `TotalPrice` $\ge \$0$, `Log_TotalPrice` $\ge 0$ | ✅ Passed |
+| **Seasonality Validity** | Calendar month integers | `Order_Month` $\in [1, 12]$ | ✅ Passed |
+| **Binary One-Hot Integrity**| Strict binary range for all 26 dummy columns | All dummy values $\in \{0, 1\}$ | ✅ Passed |
+| **Categorical Domains** | Nominal levels membership | 100% match with predefined domain taxonomies | ✅ Passed |
+
+---
+
+### 8.2 Pandera Structural Validation Schema
+
+A formal, strongly-typed Pandera schema (`pandera.pandas.DataFrameSchema`) was implemented with **`lazy=True`** to collect all schema deviations concurrently without halting on first failure:
+
+```python
+import pandera.pandas as pa
+from pandera.pandas import Column, Check, DataFrameSchema
+
+schema = DataFrameSchema({
+    # Identifiers & Keys
+    "OrderID": Column(pa.String, Check.str_matches(r"^ORD\d+$"), nullable=False),
+    "Date": Column(pa.DateTime, coerce=True, nullable=False),
+    "CustomerID": Column(pa.String, Check.str_matches(r"^C\d+$"), nullable=False),
+    "ShippingAddress": Column(pa.String, Check.str_length(min_value=1), nullable=False),
+    "TrackingNumber": Column(pa.String, Check.str_matches(r"^TRK\d+$"), nullable=False),
+
+    # Raw Domain Categoricals
+    "Product": Column(pa.String, Check.isin(["Chair", "Desk", "Laptop", "Monitor", "Phone", "Printer", "Tablet"]), nullable=False),
+    "PaymentMethod": Column(pa.String, Check.isin(["Cash", "Credit Card", "Debit Card", "Gift Card", "Online"]), nullable=False),
+    "OrderStatus": Column(pa.String, Check.isin(["Cancelled", "Delivered", "Pending", "Returned", "Shipped"]), nullable=False),
+    "CouponCode": Column(pa.String, Check.isin(["FREESHIP", "No Coupon", "SAVE10", "WINTER15"]), nullable=False),
+    "ReferralSource": Column(pa.String, Check.isin(["Email", "Facebook", "Google", "Instagram", "Referral"]), nullable=False),
+
+    # Numerical Predictors & Target
+    "Quantity": Column(pa.Int64, Check.in_range(1, 5), nullable=False, coerce=True),
+    "UnitPrice": Column(pa.Float64, Check.greater_than(0), nullable=False, coerce=True),
+    "ItemsInCart": Column(pa.Int64, Check.in_range(1, 10), nullable=False, coerce=True),
+    "TotalPrice": Column(pa.Float64, Check.greater_than_or_equal_to(0), nullable=False, coerce=True),
+
+    # Engineered Features
+    "HasCoupon": Column(pa.Int64, Check.isin([0, 1]), nullable=False, coerce=True),
+    "Order_Month": Column(pa.Int64, Check.in_range(1, 12), nullable=False, coerce=True),
+    "Log_TotalPrice": Column(pa.Float64, Check.greater_than_or_equal_to(0), nullable=False, coerce=True),
+
+    # One-Hot Encoded Dummies (26 features)
+    **{dummy_col: Column(pa.Int64, Check.isin([0, 1]), nullable=False, coerce=True) for dummy_col in ONE_HOT_COLUMNS}
+}, strict=True, coerce=True)
+```
+
+- **Validation Outcome:** **`PASSED (Structural Contract Satisfied)`**
+- **Error Handling Policy:** In case of validation failure, Pandera extracts a detailed failure table listing `column`, `check_rule`, `failure_case`, and `row_index`. In compliance with project guidelines, **no invalid records are silently modified**.
+
+---
+
+### 8.3 Data Leakage & Point-in-Time (PIT) Correctness Audit
+
+An empirical data leakage audit was conducted to classify every feature based on its temporal availability relative to the target event (checkout time):
+
+| Feature / Group | Classification | Risk Level | Leakage Mechanism & Business Rationale | Modeling Recommendation |
+| :--- | :--- | :--- | :--- | :--- |
+| `Log_TotalPrice` | **Direct Target Leakage** | 🔴 **CRITICAL** | Monotonic 1-to-1 mathematical transformation of $Y$ ($\log(1 + \text{TotalPrice})$). Contains 100% of target variance. | **Exclude from $X$** when predicting `TotalPrice` (or use as target $Y$). |
+| `OrderStatus` / `OrderStatus_*` | **Post-Event Operational Leakage** | 🔴 **HIGH** | Fulfillment states (`Delivered`, `Cancelled`, `Shipped`, `Returned`, `Pending`) occur hours/days *after* order placement. Unknown at checkout. | **Exclude from $X$** for checkout revenue prediction. (Include only for logistics churn risk models). |
+| `TrackingNumber` | **Post-Event Identifier** | 🔴 **HIGH** | Assigned by carrier logistics *after* warehouse packing/dispatch. Unavailable at cart creation. | **Exclude from $X$**. |
+| `OrderID`, `CustomerID` | **High-Cardinality Entity Keys** | 🟡 **MODERATE** | Entity identifiers risk non-generalizable memorization and overfitting in tree/deep models. | **Exclude from $X$**; retain for entity joins. |
+| `ShippingAddress` | **Unstructured Text Key** | 🟡 **MODERATE** | High-cardinality string with regional memorization risk. | **Exclude from $X$** unless parsed into regional clusters/ZIP. |
+| `Date`, `Order_Month` | **Point-in-Time Seasonality** | 🟢 **LOW (Safe)** | `Order_Month` is an instantaneous point-in-time extraction ($t$). However, evaluation must use **chronological time-based splits** rather than random K-Fold shuffling to prevent lookahead leakage. | **Retain `Order_Month`**; enforce time-series validation. |
+| `Quantity`, `UnitPrice`, `ItemsInCart`, `HasCoupon`, `Product_*`, `PaymentMethod_*`, `CouponCode_*`, `ReferralSource_*` | **Model-Ready Predictors** | 🟢 **NONE** | All 26 features are fully finalized at the moment the user clicks 'Place Order'. Zero lookahead contamination. | **Include in Final Feature Matrix ($X$)**. |
+
+---
+
+### 8.4 Reusable Feature Preparation Pipeline (Preventing Training-Serving Skew)
+
+To ensure identical feature transformations across batch model training and real-time production inference, the `prepare_features_pipeline()` function encapsulates the entire transformation lifecycle:
+
+```mermaid
+graph TD
+    A[Raw Incoming Data] --> B[Deduplication on OrderID]
+    B --> C[Missing Value Imputation & HasCoupon Creation]
+    C --> D[IQR Capping Outlier Treatment]
+    D --> E[Vectorized Feature Engineering: Order_Month, Log_TotalPrice]
+    E --> F[One-Hot Encoding with Fixed Schema Alignment]
+    F --> G[Pandera Structural Schema Contract Validation]
+    G --> H[Final Model-Ready Dataset]
+```
+
+- **Schema Alignment:** Automatically aligns one-hot categorical columns against known domain levels (filling missing categories with `0` during inference) to ensure model input tensors maintain identical shapes.
+
+---
+
+### 8.5 Enterprise Feature Store Integration (Feast Architecture)
+
+In an enterprise production deployment, a Feature Store like **Feast** can be integrated to maintain centralized feature definitions, eliminate training-serving skew, and provide point-in-time correct joins:
+
+```text
+┌─────────────────────────────────────────────────────────────────────────┐
+│                       CENTRAL FEATURE REGISTRY                          │
+│          (Git-versioned Feature Views, Entities, Data Sources)          │
+└────────────────────────────────────┬────────────────────────────────────┘
+                                     │
+           ┌─────────────────────────┴─────────────────────────┐
+           ▼                                                   ▼
+┌──────────────────────────────────────┐    ┌──────────────────────────────────────┐
+│            OFFLINE STORE             │    │             ONLINE STORE             │
+│   (Parquet / BigQuery / Snowflake)   │    │      (Redis / DynamoDB / SQLite)     │
+├──────────────────────────────────────┤    ├──────────────────────────────────────┤
+│ • Generates training datasets        │    │ • Sub-10ms real-time lookups         │
+│ • Point-in-Time (AS-OF) joins via    │    │ • Hydrated via 'feast materialize'   │
+│   'get_historical_features()'        │    │ • Queried via 'get_online_features()'│
+│ • Mathematically zero leakage        │    │ • Real-time checkout scoring         │
+└──────────────────────────────────────┘    └──────────────────────────────────────┘
+```
+
+---
+
 ## 🏗️ Project Modular Architecture
 
 The codebase adheres to industry-standard modular Data Science architecture:
@@ -127,16 +253,29 @@ The codebase adheres to industry-standard modular Data Science architecture:
 ```text
 Project 1/
 │
-├── main.py                     # High-level pipeline runner & orchestrator
-├── data_loader.py              # Data ingestion, schema inspection & deduplication
-├── missing_values.py           # Missing data diagnostics & statistical imputation
-├── outliers.py                 # Outlier detection (IQR, Z-Score) & Winsorization/Capping
-├── assumptions.py              # Statistical assumption tests (Normality, VIF / Multicollinearity)
-├── feature_engineering.py      # Datetime, business interaction & behavioral feature creation
-├── eda.py                      # Exploratory Data Analysis & bivariate summaries
+├── figures/                            # Saved visualizations & distribution charts
+│   ├── categorical_distributions.png
+│   ├── correlation_matrix.png
+│   ├── distribution_comparison.png
+│   ├── monthly_orders_distribution.png
+│   ├── numeric_distributions.png
+│   ├── product_orders_time_series.png
+│   ├── totalprice_by_month_distribution.png
+│   └── unitprice_by_product_distribution.png
+├── main.py                             # High-level pipeline runner & master orchestrator
+├── data_loader.py                      # Data ingestion, schema inspection & deduplication
+├── distributions.py                    # Target variable distribution diagnostics & plotting
+├── missing_values.py                   # Missing data diagnostics & statistical imputation
+├── outliers.py                         # Outlier detection (IQR, Z-Score) & Winsorization/Capping
+├── assumptions.py                      # Statistical assumption tests (Normality, VIF / Multicollinearity)
+├── feature_engineering.py              # Vectorized feature engineering, encoding & redundancy pruning
+├── structural_contracts.py             # Pandera validation, data leakage audit, pipeline & Feast scaling
+├── eda.py                              # Exploratory Data Analysis & bivariate summaries
 │
-├── Dataset for Data Analytics.xlsx
-└── README.md                   # Empirical documentation & project report
+├── Dataset for Data Analytics.xlsx     # Raw source dataset
+├── Dataset_Feature_Engineered.csv      # Feature-engineered intermediate dataset
+├── final_model_ready_dataset.csv       # Validated model-ready production dataset
+└── README.md                           # Empirical documentation & comprehensive project report
 ```
 
 ---
@@ -154,10 +293,12 @@ You can also run any module independently:
 
 ```bash
 py data_loader.py
+py distributions.py
 py missing_values.py
 py outliers.py
 py assumptions.py
 py feature_engineering.py
+py structural_contracts.py
 py eda.py
 ```
 
@@ -171,3 +312,5 @@ py eda.py
 - [x] **Task 5:** Statistical Assumptions Verification (`assumptions.py`)
 - [x] **Task 6:** Predictive Feature Engineering (`feature_engineering.py`)
 - [x] **Task 7:** Exploratory Data Analysis & Bivariate Insights (`eda.py`)
+- [x] **Task 8:** Structural Contracts, Pandera Validation & Production Scaling (`structural_contracts.py`)
+

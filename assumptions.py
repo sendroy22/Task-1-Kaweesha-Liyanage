@@ -1,11 +1,24 @@
 """
 Statistical Assumptions Module
-Tests for Normality (Skewness, Kurtosis, Shapiro-Wilk), Multicollinearity (VIF, Correlation), and Homoscedasticity.
+Tests for Normality (Skewness, Kurtosis, Shapiro-Wilk), Multicollinearity (Correlation Matrix, VIF),
+and Target Variable ($Y$) Formulation.
 """
 
+import os
+from pathlib import Path
 import numpy as np
 import pandas as pd
 from scipy import stats
+import matplotlib
+matplotlib.use("Agg")  # Non-interactive backend
+import matplotlib.pyplot as plt
+
+
+def ensure_figures_dir(plot_path: str) -> None:
+    """Ensure parent directory for saving figures exists."""
+    plot_dir = os.path.dirname(plot_path)
+    if plot_dir:
+        os.makedirs(plot_dir, exist_ok=True)
 
 
 def check_normality(df: pd.DataFrame, columns: list[str] | None = None) -> pd.DataFrame:
@@ -19,9 +32,9 @@ def check_normality(df: pd.DataFrame, columns: list[str] | None = None) -> pd.Da
     Returns:
         pd.DataFrame: Summary table of normality diagnostics.
     """
-    print("\n" + "=" * 70)
+    print("\n" + "=" * 75)
     print("STATISTICAL ASSUMPTION 1: NORMALITY TESTS")
-    print("=" * 70)
+    print("=" * 75)
     
     if columns is None:
         columns = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -52,24 +65,31 @@ def check_normality(df: pd.DataFrame, columns: list[str] | None = None) -> pd.Da
         
     summary_df = pd.DataFrame(results).set_index("Feature")
     print(summary_df)
-    print("=" * 70)
+    print("=" * 75)
     return summary_df
 
 
-def check_multicollinearity(df: pd.DataFrame, columns: list[str] | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+def check_multicollinearity(
+    df: pd.DataFrame, 
+    columns: list[str] | None = None,
+    save_plot: bool = True,
+    plot_path: str = os.path.join("figures", "correlation_matrix.png")
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Evaluate multicollinearity using Pearson correlation matrix and Variance Inflation Factor (VIF).
     
     Parameters:
         df (pd.DataFrame): Input DataFrame.
         columns (list[str] | None): Numerical feature columns.
+        save_plot (bool): Whether to save correlation heatmap figure.
+        plot_path (str): Filepath to save heatmap.
         
     Returns:
         tuple[pd.DataFrame, pd.DataFrame]: (Correlation Matrix, VIF Table).
     """
-    print("\n" + "=" * 70)
-    print("STATISTICAL ASSUMPTION 2: MULTICOLLINEARITY & VIF ANALYSIS")
-    print("=" * 70)
+    print("\n" + "=" * 75)
+    print("STATISTICAL ASSUMPTION 2: CORRELATION MATRIX & MULTICOLLINEARITY (VIF)")
+    print("=" * 75)
     
     if columns is None:
         columns = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -95,7 +115,6 @@ def check_multicollinearity(df: pd.DataFrame, columns: list[str] | None = None) 
             
             # Linear regression R^2 to find VIF = 1 / (1 - R^2)
             try:
-                # OLS estimate via least squares
                 coeffs, residuals, rank, s = np.linalg.lstsq(X_others, y_i, rcond=None)
                 y_pred = X_others @ coeffs
                 ss_res = np.sum((y_i - y_pred) ** 2)
@@ -120,8 +139,84 @@ def check_multicollinearity(df: pd.DataFrame, columns: list[str] | None = None) 
         vif_df = pd.DataFrame()
         print("\n[INFO] Need at least 2 numerical features to compute VIF.")
         
-    print("=" * 70)
+    # Graphical Correlation Heatmap
+    if save_plot and not corr_matrix.empty:
+        ensure_figures_dir(plot_path)
+        fig, ax = plt.subplots(figsize=(8, 7))
+        
+        cax = ax.matshow(corr_matrix, cmap="coolwarm", vmin=-1, vmax=1)
+        fig.colorbar(cax, fraction=0.046, pad=0.04)
+        
+        ax.set_xticks(range(len(corr_matrix.columns)))
+        ax.set_yticks(range(len(corr_matrix.index)))
+        ax.set_xticklabels(corr_matrix.columns, rotation=45, ha="left", fontsize=10, fontweight="bold")
+        ax.set_yticklabels(corr_matrix.index, fontsize=10, fontweight="bold")
+        
+        # Annotate correlation coefficient values inside each cell
+        for i in range(len(corr_matrix.index)):
+            for j in range(len(corr_matrix.columns)):
+                val = corr_matrix.iloc[i, j]
+                text_color = "white" if abs(val) > 0.55 else "black"
+                ax.text(j, i, f"{val:.3f}", ha="center", va="center", color=text_color, fontsize=10, fontweight="bold")
+                
+        plt.title("Pearson Correlation Heatmap Matrix", fontsize=13, fontweight="bold", pad=20)
+        plt.tight_layout()
+        plt.savefig(plot_path, dpi=300, bbox_inches="tight")
+        plt.close()
+        print(f"\n[FIGURE SAVED] Correlation heatmap matrix saved to: '{plot_path}'")
+        
+    print("=" * 75)
     return corr_matrix, vif_df
+
+
+def identify_target_variable(df: pd.DataFrame) -> dict:
+    """
+    Formulate and identify potential target ($Y$) variables in the dataset
+    based on machine learning problem paradigms.
+    """
+    print("\n" + "=" * 75)
+    print("TARGET VARIABLE ($Y$) FORMULATION & ML PROBLEM MAPPING")
+    print("=" * 75)
+    
+    target_mappings = {
+        "Primary Regression Target": {
+            "Variable (Y)": "TotalPrice",
+            "Data Type": "Continuous Float ($)",
+            "Problem Type": "Continuous Regression / Revenue Prediction",
+            "Business Objective": "Predict expected transaction revenue based on cart contents, quantity, unit pricing, promotions, and acquisition channel.",
+            "Predictors (X)": ["Quantity", "UnitPrice", "ItemsInCart", "HasCoupon", "Product", "PaymentMethod", "ReferralSource", "Date_Temporal_Features"]
+        },
+        "Alternative Classification Target 1": {
+            "Variable (Y)": "OrderStatus",
+            "Data Type": "Categorical Nominal (5 classes)",
+            "Problem Type": "Multi-class Classification / Fulfillment & Churn Risk",
+            "Business Objective": "Predict order cancellation or return risk at checkout to optimize logistics and fraud detection.",
+            "Predictors (X)": ["TotalPrice", "UnitPrice", "Quantity", "ItemsInCart", "PaymentMethod", "CouponCode", "ReferralSource"]
+        },
+        "Alternative Classification Target 2": {
+            "Variable (Y)": "HasCoupon (or CouponCode)",
+            "Data Type": "Binary Indicator (0 / 1)",
+            "Problem Type": "Binary Classification / Propensity to Apply Discounts",
+            "Business Objective": "Model customer price sensitivity and coupon utilization propensity for targeted promotions.",
+            "Predictors (X)": ["TotalPrice", "Quantity", "Product", "ReferralSource", "ItemsInCart"]
+        },
+        "Alternative Regression Target 3": {
+            "Variable (Y)": "Quantity",
+            "Data Type": "Discrete Integer (1 - 5)",
+            "Problem Type": "Discrete Regression / Demand Estimation",
+            "Business Objective": "Forecast item order volume based on unit pricing and marketing referral channel.",
+            "Predictors (X)": ["UnitPrice", "Product", "ReferralSource", "HasCoupon"]
+        }
+    }
+    
+    for category, details in target_mappings.items():
+        print(f"\n>>> {category}: '{details['Variable (Y)']}'")
+        print(f"    - Type:       {details['Problem Type']}")
+        print(f"    - Objective:  {details['Business Objective']}")
+        print(f"    - Predictors: {', '.join(details['Predictors (X)'])}")
+        
+    print("=" * 75)
+    return target_mappings
 
 
 def check_statistical_assumptions(df: pd.DataFrame) -> None:
@@ -132,6 +227,7 @@ def check_statistical_assumptions(df: pd.DataFrame) -> None:
     if numeric_cols:
         check_normality(df, columns=numeric_cols)
         check_multicollinearity(df, columns=numeric_cols)
+    identify_target_variable(df)
 
 
 if __name__ == "__main__":
@@ -143,3 +239,4 @@ if __name__ == "__main__":
     df = handle_missing_values(df)
     
     check_statistical_assumptions(df)
+

@@ -4,6 +4,7 @@ Provides IQR and Z-Score outlier detection, outlier row extraction,
 log transformation (log(1 + x)), distribution comparisons, and robust handling (capping / trimming / transformation).
 """
 
+import os
 from typing import Literal
 import numpy as np
 import pandas as pd
@@ -310,7 +311,7 @@ def compare_distributions(
     col1: str = "TotalPrice", 
     col2: str = "Log_TotalPrice",
     save_plot: bool = True,
-    plot_path: str = "distribution_comparison.png"
+    plot_path: str = os.path.join("figures", "distribution_comparison.png")
 ) -> pd.DataFrame:
     """
     Compare the statistical distributions of the original and log-transformed columns
@@ -410,6 +411,11 @@ def compare_distributions(
         
         plt.suptitle("Comparison of Original vs. Log-Transformed Feature Distributions", fontsize=14, fontweight="bold", y=1.02)
         plt.tight_layout()
+        
+        plot_dir = os.path.dirname(plot_path)
+        if plot_dir:
+            os.makedirs(plot_dir, exist_ok=True)
+            
         plt.savefig(plot_path, dpi=300, bbox_inches="tight")
         plt.close()
         print(f"[VISUALIZATION] Distribution comparison histogram saved to: '{plot_path}'")
@@ -511,4 +517,10 @@ if __name__ == "__main__":
     print("=" * 70)
     
     # 5. Compare distributions using summary statistics and histograms
-    compare_distributions(df_transformed, col1="TotalPrice", col2="Log_TotalPrice", save_plot=True, plot_path="distribution_comparison.png")
+    compare_distributions(
+        df_transformed, 
+        col1="TotalPrice", 
+        col2="Log_TotalPrice", 
+        save_plot=True, 
+        plot_path=os.path.join("figures", "distribution_comparison.png")
+    )
