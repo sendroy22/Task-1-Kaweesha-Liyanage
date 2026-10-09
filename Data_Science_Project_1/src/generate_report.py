@@ -1,6 +1,8 @@
 """
-Script to generate the publication-grade Project_1_Report.pdf using ReportLab.
-Data Science Project 1 Executive & Technical Report.
+Report Generation Module - Data Science Project 1
+Generates the publication-grade Project_1_Report.pdf using ReportLab.
+Combines executive findings, descriptive statistics tables, Pandera validation contracts,
+and embedded diagnostic figures.
 """
 
 import os
@@ -14,19 +16,10 @@ from reportlab.platypus import (
 )
 from reportlab.pdfgen import canvas
 
-# Path definitions
-BASE_DIR = Path(__file__).resolve().parent
-PROJECT_DIR = BASE_DIR / "Data_Science_Project_1"
-REPORT_PATH = PROJECT_DIR / "report" / "Project_1_Report.pdf"
-FIG_DIR = PROJECT_DIR / "outputs" / "figures"
-TABLES_DIR = PROJECT_DIR / "outputs" / "tables"
-
-REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
-
 
 class NumberedCanvas(canvas.Canvas):
     """
-    Two-pass canvas to dynamically compute total page count and add professional running headers/footers.
+    Two-pass canvas to compute dynamic total page count and add running headers/footers.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -66,9 +59,22 @@ class NumberedCanvas(canvas.Canvas):
         self.restoreState()
 
 
-def build_pdf():
+def build_pdf_report(
+    output_pdf_path: str | Path = Path("report/Project_1_Report.pdf"),
+    figures_dir: str | Path = Path("outputs/figures"),
+    tables_dir: str | Path = Path("outputs/tables")
+) -> Path:
+    """
+    Build the complete PDF report from generated tables and figures.
+    """
+    out_path = Path(output_pdf_path)
+    fig_dir = Path(figures_dir)
+    tbl_dir = Path(tables_dir)
+    
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    
     doc = SimpleDocTemplate(
-        str(REPORT_PATH),
+        str(out_path),
         pagesize=letter,
         leftMargin=54,
         rightMargin=54,
@@ -209,7 +215,7 @@ def build_pdf():
     ))
 
     # Load missing values table
-    missing_csv = TABLES_DIR / "missing_values.csv"
+    missing_csv = tbl_dir / "missing_values.csv"
     if missing_csv.exists():
         df_miss = pd.read_csv(missing_csv)
         table_data = [[
@@ -261,7 +267,7 @@ def build_pdf():
     ))
 
     # Load outlier summary table
-    outlier_csv = TABLES_DIR / "outlier_summary.csv"
+    outlier_csv = tbl_dir / "outlier_summary.csv"
     if outlier_csv.exists():
         df_out = pd.read_csv(outlier_csv)
         out_table_data = [[
@@ -307,22 +313,22 @@ def build_pdf():
     ))
 
     # Embed Distribution Comparison figure
-    dist_comp_img = FIG_DIR / "distributions" / "distribution_comparison.png"
+    dist_comp_img = fig_dir / "distributions" / "distribution_comparison.png"
     if dist_comp_img.exists():
         story.append(Paragraph("<b>Figure 1: Target Variable Normalization (TotalPrice vs. Log_TotalPrice)</b>", h2_style))
         story.append(Image(str(dist_comp_img), width=480, height=175))
         story.append(Spacer(1, 10))
 
     # Embed Boxplot figure
-    boxplot_img = FIG_DIR / "boxplots" / "outlier_boxplots_numerical.png"
+    boxplot_img = fig_dir / "boxplots" / "outlier_boxplots_numerical.png"
     if boxplot_img.exists():
         story.append(Paragraph("<b>Figure 2: Univariate Outlier Detection via Boxplots (IQR Rule)</b>", h2_style))
         story.append(Image(str(boxplot_img), width=480, height=240))
         story.append(Spacer(1, 10))
 
     # Embed Categorical Breakdown & Correlation Heatmap
-    cat_break_img = FIG_DIR / "categorical_plots" / "bivariate_categorical_breakdown.png"
-    corr_heat_img = FIG_DIR / "correlation_heatmap.png"
+    cat_break_img = fig_dir / "categorical_plots" / "bivariate_categorical_breakdown.png"
+    corr_heat_img = fig_dir / "correlation_heatmap.png"
 
     if cat_break_img.exists():
         story.append(Paragraph("<b>Figure 3: Fulfillment Status Proportions across Product Lines (%)</b>", h2_style))
@@ -354,7 +360,7 @@ def build_pdf():
     ))
 
     # Load validation summary table
-    val_csv = TABLES_DIR / "validation_summary.csv"
+    val_csv = tbl_dir / "validation_summary.csv"
     if val_csv.exists():
         df_val = pd.read_csv(val_csv)
         val_table_data = [[
@@ -402,8 +408,14 @@ def build_pdf():
 
     # Build document
     doc.build(story, canvasmaker=NumberedCanvas)
-    print(f"[PDF REPORT] Successfully generated report at: {REPORT_PATH.resolve()}")
+    print(f"[PDF REPORT] Successfully generated report at: {out_path.resolve()}")
+    return out_path
 
 
 if __name__ == "__main__":
-    build_pdf()
+    project_root = Path(__file__).resolve().parent.parent
+    pdf_out = project_root / "report" / "Project_1_Report.pdf"
+    fig_dir = project_root / "outputs" / "figures"
+    tbl_dir = project_root / "outputs" / "tables"
+    
+    build_pdf_report(pdf_out, fig_dir, tbl_dir)

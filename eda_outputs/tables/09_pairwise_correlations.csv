@@ -1,7 +1,0 @@
-Variable 1,Variable 2,Correlation (r),Strength,Flagged (|r| > 0.80)
-UnitPrice,TotalPrice,0.7171,Moderate (0.5 <= |r| <= 0.8),Normal
-Quantity,ItemsInCart,0.6501,Moderate (0.5 <= |r| <= 0.8),Normal
-Quantity,TotalPrice,0.6153,Moderate (0.5 <= |r| <= 0.8),Normal
-ItemsInCart,TotalPrice,0.3925,Weak (0.2 <= |r| < 0.5),Normal
-Quantity,UnitPrice,0.0146,Negligible (|r| < 0.2),Normal
-UnitPrice,ItemsInCart,0.0006,Negligible (|r| < 0.2),Normal

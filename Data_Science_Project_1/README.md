@@ -56,10 +56,15 @@ Data_Science_Project_1/
 ├── notebooks/
 │   └── Data_Science_Project_1.ipynb        # End-to-end interactive Jupyter notebook with markdown
 │
+├── main.py                                 # Master pipeline runner orchestrating all stages
+│
 ├── src/
 │   ├── data_cleaning.py                    # Modular ingestion, duplicate handling & imputation
+│   ├── eda.py                              # Exploratory data analysis, descriptive statistics & plots
+│   ├── assumptions.py                      # Statistical assumptions (Normality, VIF, Target formulation)
 │   ├── feature_engineering.py             # Temporal extraction, log transform & one-hot encoding
-│   └── validation.py                       # Pandera DataFrameSchema & data contract validation
+│   ├── validation.py                       # Pandera DataFrameSchema & data contract validation
+│   └── generate_report.py                  # Executive PDF report compilation module
 │
 ├── outputs/
 │   ├── figures/
@@ -90,6 +95,7 @@ Data_Science_Project_1/
 │   └── tables/
 │       ├── missing_values.csv              # Missingness diagnostic and imputation strategy
 │       ├── outlier_summary.csv             # IQR fences, outlier frequencies & capping status
+│       ├── statistical_assumptions.csv      # Shapiro-Wilk normality and VIF diagnostics
 │       ├── correlation_summary.csv         # Pairwise Pearson correlation rankings
 │       └── validation_summary.csv          # Pandera data contract audit pass/fail report
 │
@@ -133,10 +139,13 @@ You can run the entire modular pipeline with a single command or execute individ
 # 1. Run Data Cleaning (creates data/processed/cleaned_dataset.csv & diagnostic tables)
 python src/data_cleaning.py
 
-# 2. Run Feature Engineering (generates temporal, log & dummy features)
+# 2. Run Exploratory Data Analysis (generates statistics & visualization figures)
+python src/eda.py
+
+# 3. Run Feature Engineering (generates temporal, log & dummy features)
 python src/feature_engineering.py
 
-# 3. Run Validation & Schema Verification (produces final_model_ready_dataset.csv)
+# 4. Run Validation & Schema Verification (produces final_model_ready_dataset.csv)
 python src/validation.py
 ```
 
@@ -241,9 +250,13 @@ flowchart LR
 - [x] **`data/processed/cleaned_dataset.csv`** cleaned dataset.
 - [x] **`data/processed/final_model_ready_dataset.csv`** 38-feature validated dataset.
 - [x] **`notebooks/Data_Science_Project_1.ipynb`** full reproducible Jupyter Notebook.
+- [x] **`main.py`** master pipeline runner.
 - [x] **`src/data_cleaning.py`** modular cleaning & deduplication module.
+- [x] **`src/eda.py`** comprehensive exploratory data analysis & visualization module.
+- [x] **`src/assumptions.py`** statistical assumptions & hypothesis testing module.
 - [x] **`src/feature_engineering.py`** modular feature engineering & encoding module.
 - [x] **`src/validation.py`** Pandera validation & contract module.
+- [x] **`src/generate_report.py`** executive PDF report generation module.
 - [x] **`outputs/figures/distributions/`** all 6 distribution plots.
 - [x] **`outputs/figures/boxplots/`** all 4 boxplots.
 - [x] **`outputs/figures/categorical_plots/`** all 6 categorical charts.

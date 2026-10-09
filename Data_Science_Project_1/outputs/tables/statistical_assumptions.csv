@@ -1,0 +1,6 @@
+Feature,Skewness,Kurtosis,Shapiro_Stat,p_value,Normally_Distributed,Recommendation,VIF,Multicollinearity_Risk
+Quantity,0.028,-1.295,0.8886,1.4950e-28,No (Skewed/Non-normal),Log/Power transform or robust scaling,4.82,Low (<5)
+UnitPrice,-0.027,-1.191,0.9552,1.0585e-18,No (Skewed/Non-normal),Log/Power transform or robust scaling,5.2,Moderate (5-10)
+ItemsInCart,0.001,-0.709,0.9701,4.8881e-15,No (Skewed/Non-normal),Log/Power transform or robust scaling,1.73,Low (<5)
+TotalPrice,0.886,-0.062,0.9113,7.1083e-26,No (Skewed/Non-normal),Log/Power transform or robust scaling,8.37,Moderate (5-10)
+HasCoupon,-1.111,-0.768,0.5448,3.6910e-48,No (Skewed/Non-normal),Log/Power transform or robust scaling,1.0,Low (<5)

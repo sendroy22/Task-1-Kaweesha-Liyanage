@@ -1,5 +1,0 @@
-,Quantity,UnitPrice,ItemsInCart,TotalPrice
-Quantity,1.0,0.0146,0.6501,0.6153
-UnitPrice,0.0146,1.0,0.0006,0.7171
-ItemsInCart,0.6501,0.0006,1.0,0.3925
-TotalPrice,0.6153,0.7171,0.3925,1.0
