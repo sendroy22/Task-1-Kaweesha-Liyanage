@@ -1,0 +1,5 @@
+Variable,Count,Mean,Median,Std Dev,Min,Q1 (25%),Q3 (75%),IQR,Max,Skewness,Kurtosis,Skewness Classification
+Quantity,1200,2.95,3.0,1.41,1.0,2.0,4.0,2.0,5.0,0.03,-1.29,Fairly Symmetrical
+UnitPrice,1200,356.41,364.21,197.18,11.39,186.06,521.57,335.51,699.93,-0.03,-1.19,Fairly Symmetrical
+ItemsInCart,1200,5.48,5.0,2.28,1.0,4.0,7.0,3.0,10.0,0.0,-0.71,Fairly Symmetrical
+TotalPrice,1200,1053.97,823.62,819.86,11.39,410.52,1578.48,1167.96,3456.4,0.89,-0.04,Moderately Skewed

@@ -1,0 +1,5 @@
+Feature,Q1,Q3,IQR,Lower_Fence,Upper_Fence,Outlier_Count,Outlier_Percentage,Treatment_Applied
+UnitPrice,186.06,521.57,335.51,-317.2,1024.83,0,0.0,"IQR Winsorization [-317.20, 1024.83]"
+Quantity,2.0,4.0,2.0,-1.0,7.0,0,0.0,"IQR Winsorization [-1.00, 7.00]"
+ItemsInCart,4.0,7.0,3.0,-0.5,11.5,0,0.0,"IQR Winsorization [-0.50, 11.50]"
+TotalPrice,410.52,1578.47,1167.95,-1341.41,3330.41,8,0.67,"IQR Winsorization [-1341.41, 3330.41]"

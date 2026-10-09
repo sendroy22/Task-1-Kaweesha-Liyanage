@@ -1,0 +1,15 @@
+Variable,Data Type,Missing Count,Missing (%),Missingness Classification,Recommended Treatment Method
+CouponCode,object,309,25.75,Moderate Missingness (5% - 30%),Domain-aware constant ('No Coupon') + binary indicator (HasCoupon); avoid naive mode imputation
+OrderID,object,0,0.0,No Missing Values,None required (100% complete)
+CustomerID,object,0,0.0,No Missing Values,None required (100% complete)
+Product,object,0,0.0,No Missing Values,None required (100% complete)
+Quantity,int64,0,0.0,No Missing Values,None required (100% complete)
+Date,datetime64[ns],0,0.0,No Missing Values,None required (100% complete)
+UnitPrice,float64,0,0.0,No Missing Values,None required (100% complete)
+ShippingAddress,object,0,0.0,No Missing Values,None required (100% complete)
+OrderStatus,object,0,0.0,No Missing Values,None required (100% complete)
+PaymentMethod,object,0,0.0,No Missing Values,None required (100% complete)
+TrackingNumber,object,0,0.0,No Missing Values,None required (100% complete)
+ItemsInCart,int64,0,0.0,No Missing Values,None required (100% complete)
+ReferralSource,object,0,0.0,No Missing Values,None required (100% complete)
+TotalPrice,float64,0,0.0,No Missing Values,None required (100% complete)

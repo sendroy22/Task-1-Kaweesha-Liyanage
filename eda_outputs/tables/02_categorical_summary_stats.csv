@@ -1,0 +1,10 @@
+Variable,Unique Categories,Mode,Mode Frequency,Mode Percentage (%),Missing Values
+OrderID,1200,ORD200000,1,0.08,0
+CustomerID,1189,C14847,2,0.17,0
+Product,7,Printer,181,15.08,0
+ShippingAddress,655,533 Main St,8,0.67,0
+PaymentMethod,5,Online,258,21.5,0
+OrderStatus,5,Cancelled,250,20.83,0
+TrackingNumber,1200,TRK10003020,1,0.08,0
+CouponCode,3,FREESHIP,313,26.08,309
+ReferralSource,5,Instagram,259,21.58,0

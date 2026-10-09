@@ -1,0 +1,12 @@
+Check_ID,Validation_Domain,Rule_Description,Target_Columns,Observed_Metric,Pass_Status
+VAL-01,Completeness,Zero missing values across all columns,All Columns,0 nulls,PASSED
+VAL-02,Uniqueness,Primary key 'OrderID' must be 100% unique,OrderID,0 duplicate keys,PASSED
+VAL-03,Domain Constraints,"Quantity in [1, 5]",Quantity,"Min: 1, Max: 5 (Violations: 0)",PASSED
+VAL-04,Domain Constraints,UnitPrice > 0,UnitPrice,"Min: 11.39, Max: 699.93 (Violations: 0)",PASSED
+VAL-05,Domain Constraints,TotalPrice >= 0,TotalPrice,"Min: 11.39, Max: 3330.4075 (Violations: 0)",PASSED
+VAL-06,Domain Constraints,"ItemsInCart in [1, 10]",ItemsInCart,"Min: 1, Max: 10 (Violations: 0)",PASSED
+VAL-07,Domain Constraints,"Order_Month in [1, 12]",Order_Month,"Min: 1, Max: 12 (Violations: 0)",PASSED
+VAL-08,Domain Constraints,"HasCoupon in {0, 1}",HasCoupon,"Min: 0, Max: 1 (Violations: 0)",PASSED
+VAL-09,Domain Constraints,Log_TotalPrice >= 0,Log_TotalPrice,"Min: 2.516889695641051, Max: 8.111150166346231 (Violations: 0)",PASSED
+VAL-10,Encoding Integrity,"All One-Hot dummies must be binary {0, 1}",26 One-Hot Columns,Violations: 0,PASSED
+VAL-11,Pandera Engine,Automated Pandera DataFrameSchema lazy evaluation,Validated Schema Columns,Schema verified with 0 schema errors.,PASSED

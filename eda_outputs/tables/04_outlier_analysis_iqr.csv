@@ -1,0 +1,5 @@
+Variable,Q1 (25%),Q3 (75%),IQR,Lower Bound,Upper Bound,Lower Outliers Count,Upper Outliers Count,Total Outliers,Outlier (%),Min Outlier,Max Outlier
+Quantity,2.0,4.0,2.0,-1.0,7.0,0,0,0,0.0,None,None
+UnitPrice,186.06,521.57,335.51,-317.2,1024.83,0,0,0,0.0,None,None
+ItemsInCart,4.0,7.0,3.0,-0.5,11.5,0,0,0,0.0,None,None
+TotalPrice,410.52,1578.48,1167.96,-1341.41,3330.41,0,8,8,0.67,3334.0,3456.4

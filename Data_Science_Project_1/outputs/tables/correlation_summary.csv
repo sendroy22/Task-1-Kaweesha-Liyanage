@@ -1,0 +1,529 @@
+Feature_1,Feature_2,Pearson_r,Abs_Pearson_r,Relationship_Strength
+HasCoupon,CouponCode_NO_COUPON,-1.0,1.0,Very Strong
+TotalPrice,Log_TotalPrice,0.8748,0.8748,Very Strong
+UnitPrice,Log_TotalPrice,0.7599,0.7599,Strong
+UnitPrice,TotalPrice,0.7172,0.7172,Strong
+Quantity,ItemsInCart,0.6501,0.6501,Strong
+Quantity,TotalPrice,0.6154,0.6154,Strong
+Quantity,Log_TotalPrice,0.5599,0.5599,Moderate
+ItemsInCart,TotalPrice,0.3926,0.3926,Weak
+HasCoupon,CouponCode_FREESHIP,0.3498,0.3498,Weak
+CouponCode_FREESHIP,CouponCode_NO_COUPON,-0.3498,0.3498,Weak
+ItemsInCart,Log_TotalPrice,0.3488,0.3488,Weak
+CouponCode_FREESHIP,CouponCode_WINTER15,-0.3369,0.3369,Weak
+CouponCode_NO_COUPON,CouponCode_WINTER15,-0.334,0.334,Weak
+HasCoupon,CouponCode_WINTER15,0.334,0.334,Weak
+CouponCode_FREESHIP,CouponCode_SAVE10,-0.3323,0.3323,Weak
+CouponCode_NO_COUPON,CouponCode_SAVE10,-0.3294,0.3294,Weak
+HasCoupon,CouponCode_SAVE10,0.3294,0.3294,Weak
+CouponCode_SAVE10,CouponCode_WINTER15,-0.3172,0.3172,Weak
+ReferralSource_Email,ReferralSource_Instagram,-0.2691,0.2691,Weak
+PaymentMethod_Cash,PaymentMethod_Online,-0.2658,0.2658,Weak
+ReferralSource_Google,ReferralSource_Instagram,-0.263,0.263,Weak
+OrderStatus_Cancelled,OrderStatus_Returned,-0.2612,0.2612,Weak
+PaymentMethod_Credit Card,PaymentMethod_Online,-0.2576,0.2576,Weak
+ReferralSource_Email,ReferralSource_Google,-0.2572,0.2572,Weak
+PaymentMethod_Debit Card,PaymentMethod_Online,-0.2562,0.2562,Weak
+PaymentMethod_Gift Card,PaymentMethod_Online,-0.2548,0.2548,Weak
+OrderStatus_Cancelled,OrderStatus_Pending,-0.2545,0.2545,Weak
+ReferralSource_Facebook,ReferralSource_Instagram,-0.2541,0.2541,Weak
+OrderStatus_Cancelled,OrderStatus_Shipped,-0.2532,0.2532,Weak
+OrderStatus_Pending,OrderStatus_Returned,-0.2526,0.2526,Weak
+OrderStatus_Returned,OrderStatus_Shipped,-0.2512,0.2512,Weak
+OrderStatus_Cancelled,OrderStatus_Delivered,-0.2505,0.2505,Weak
+ReferralSource_Instagram,ReferralSource_Referral,-0.25,0.25,Weak
+PaymentMethod_Cash,PaymentMethod_Credit Card,-0.2499,0.2499,Weak
+PaymentMethod_Cash,PaymentMethod_Debit Card,-0.2486,0.2486,Weak
+OrderStatus_Delivered,OrderStatus_Returned,-0.2486,0.2486,Weak
+ReferralSource_Email,ReferralSource_Facebook,-0.2485,0.2485,Weak
+PaymentMethod_Cash,PaymentMethod_Gift Card,-0.2473,0.2473,Weak
+OrderStatus_Pending,OrderStatus_Shipped,-0.2448,0.2448,Weak
+ReferralSource_Email,ReferralSource_Referral,-0.2444,0.2444,Weak
+ReferralSource_Facebook,ReferralSource_Google,-0.2428,0.2428,Weak
+OrderStatus_Delivered,OrderStatus_Pending,-0.2422,0.2422,Weak
+OrderStatus_Delivered,OrderStatus_Shipped,-0.2409,0.2409,Weak
+PaymentMethod_Credit Card,PaymentMethod_Debit Card,-0.2409,0.2409,Weak
+PaymentMethod_Credit Card,PaymentMethod_Gift Card,-0.2397,0.2397,Weak
+ReferralSource_Google,ReferralSource_Referral,-0.2388,0.2388,Weak
+PaymentMethod_Debit Card,PaymentMethod_Gift Card,-0.2384,0.2384,Weak
+ReferralSource_Facebook,ReferralSource_Referral,-0.2307,0.2307,Weak
+Product_Printer,Product_Tablet,-0.1765,0.1765,Very Weak / Negligible
+Product_Chair,Product_Printer,-0.1759,0.1759,Very Weak / Negligible
+Product_Chair,Product_Tablet,-0.1747,0.1747,Very Weak / Negligible
+Product_Laptop,Product_Printer,-0.173,0.173,Very Weak / Negligible
+Product_Laptop,Product_Tablet,-0.1719,0.1719,Very Weak / Negligible
+Product_Chair,Product_Laptop,-0.1713,0.1713,Very Weak / Negligible
+Product_Desk,Product_Printer,-0.1712,0.1712,Very Weak / Negligible
+Product_Desk,Product_Tablet,-0.1701,0.1701,Very Weak / Negligible
+Product_Chair,Product_Desk,-0.1695,0.1695,Very Weak / Negligible
+Product_Monitor,Product_Printer,-0.1671,0.1671,Very Weak / Negligible
+Product_Desk,Product_Laptop,-0.1667,0.1667,Very Weak / Negligible
+Product_Monitor,Product_Tablet,-0.166,0.166,Very Weak / Negligible
+Product_Chair,Product_Monitor,-0.1655,0.1655,Very Weak / Negligible
+Product_Phone,Product_Printer,-0.1629,0.1629,Very Weak / Negligible
+Product_Laptop,Product_Monitor,-0.1627,0.1627,Very Weak / Negligible
+Product_Phone,Product_Tablet,-0.1619,0.1619,Very Weak / Negligible
+Product_Chair,Product_Phone,-0.1613,0.1613,Very Weak / Negligible
+Product_Desk,Product_Monitor,-0.1611,0.1611,Very Weak / Negligible
+Product_Laptop,Product_Phone,-0.1587,0.1587,Very Weak / Negligible
+Product_Desk,Product_Phone,-0.157,0.157,Very Weak / Negligible
+Product_Monitor,Product_Phone,-0.1533,0.1533,Very Weak / Negligible
+OrderStatus_Pending,ReferralSource_Instagram,0.0908,0.0908,Very Weak / Negligible
+Quantity,Product_Phone,-0.0855,0.0855,Very Weak / Negligible
+OrderStatus_Shipped,ReferralSource_Referral,0.084,0.084,Very Weak / Negligible
+Order_Month,ReferralSource_Referral,-0.0789,0.0789,Very Weak / Negligible
+PaymentMethod_Online,OrderStatus_Returned,-0.0758,0.0758,Very Weak / Negligible
+ItemsInCart,Product_Phone,-0.0692,0.0692,Very Weak / Negligible
+PaymentMethod_Online,OrderStatus_Delivered,0.0686,0.0686,Very Weak / Negligible
+OrderStatus_Shipped,ReferralSource_Email,-0.067,0.067,Very Weak / Negligible
+Quantity,OrderStatus_Returned,-0.0668,0.0668,Very Weak / Negligible
+OrderStatus_Cancelled,ReferralSource_Instagram,-0.0646,0.0646,Very Weak / Negligible
+Product_Phone,CouponCode_WINTER15,-0.0633,0.0633,Very Weak / Negligible
+PaymentMethod_Online,CouponCode_NO_COUPON,0.0629,0.0629,Very Weak / Negligible
+HasCoupon,PaymentMethod_Online,-0.0629,0.0629,Very Weak / Negligible
+Quantity,Product_Chair,0.0627,0.0627,Very Weak / Negligible
+OrderStatus_Delivered,ReferralSource_Email,0.0618,0.0618,Very Weak / Negligible
+ItemsInCart,PaymentMethod_Online,-0.0588,0.0588,Very Weak / Negligible
+PaymentMethod_Gift Card,OrderStatus_Shipped,0.0585,0.0585,Very Weak / Negligible
+OrderStatus_Returned,CouponCode_NO_COUPON,0.0584,0.0584,Very Weak / Negligible
+HasCoupon,OrderStatus_Returned,-0.0584,0.0584,Very Weak / Negligible
+PaymentMethod_Gift Card,CouponCode_FREESHIP,0.0579,0.0579,Very Weak / Negligible
+OrderStatus_Returned,CouponCode_SAVE10,-0.0574,0.0574,Very Weak / Negligible
+Order_Month,ReferralSource_Email,0.0566,0.0566,Very Weak / Negligible
+Product_Laptop,PaymentMethod_Cash,0.056,0.056,Very Weak / Negligible
+Product_Desk,PaymentMethod_Online,-0.0556,0.0556,Very Weak / Negligible
+PaymentMethod_Debit Card,ReferralSource_Email,0.0554,0.0554,Very Weak / Negligible
+PaymentMethod_Gift Card,OrderStatus_Pending,-0.0554,0.0554,Very Weak / Negligible
+UnitPrice,Product_Desk,-0.0553,0.0553,Very Weak / Negligible
+ItemsInCart,Product_Chair,0.0541,0.0541,Very Weak / Negligible
+ItemsInCart,PaymentMethod_Cash,0.0531,0.0531,Very Weak / Negligible
+OrderStatus_Delivered,ReferralSource_Referral,-0.053,0.053,Very Weak / Negligible
+Product_Phone,CouponCode_SAVE10,0.0513,0.0513,Very Weak / Negligible
+Quantity,Product_Tablet,-0.0504,0.0504,Very Weak / Negligible
+Order_Month,OrderStatus_Cancelled,-0.0502,0.0502,Very Weak / Negligible
+Product_Chair,OrderStatus_Returned,-0.0501,0.0501,Very Weak / Negligible
+Product_Phone,OrderStatus_Delivered,0.0501,0.0501,Very Weak / Negligible
+Product_Chair,PaymentMethod_Online,0.0498,0.0498,Very Weak / Negligible
+HasCoupon,PaymentMethod_Gift Card,0.0495,0.0495,Very Weak / Negligible
+PaymentMethod_Gift Card,CouponCode_NO_COUPON,-0.0495,0.0495,Very Weak / Negligible
+Product_Phone,PaymentMethod_Cash,-0.049,0.049,Very Weak / Negligible
+PaymentMethod_Debit Card,OrderStatus_Pending,0.0487,0.0487,Very Weak / Negligible
+Product_Tablet,PaymentMethod_Online,0.0485,0.0485,Very Weak / Negligible
+OrderStatus_Returned,ReferralSource_Facebook,0.0477,0.0477,Very Weak / Negligible
+Product_Phone,ReferralSource_Google,0.0474,0.0474,Very Weak / Negligible
+Product_Phone,ReferralSource_Instagram,-0.0462,0.0462,Very Weak / Negligible
+Product_Chair,OrderStatus_Cancelled,0.0457,0.0457,Very Weak / Negligible
+Product_Printer,ReferralSource_Instagram,-0.0457,0.0457,Very Weak / Negligible
+Log_TotalPrice,PaymentMethod_Credit Card,0.0454,0.0454,Very Weak / Negligible
+Product_Chair,ReferralSource_Google,-0.0453,0.0453,Very Weak / Negligible
+OrderStatus_Shipped,ReferralSource_Instagram,-0.0445,0.0445,Very Weak / Negligible
+TotalPrice,PaymentMethod_Credit Card,0.0444,0.0444,Very Weak / Negligible
+HasCoupon,ReferralSource_Email,0.044,0.044,Very Weak / Negligible
+CouponCode_NO_COUPON,ReferralSource_Email,-0.044,0.044,Very Weak / Negligible
+TotalPrice,OrderStatus_Returned,-0.0429,0.0429,Very Weak / Negligible
+Quantity,Product_Laptop,0.0428,0.0428,Very Weak / Negligible
+Product_Desk,CouponCode_WINTER15,0.0425,0.0425,Very Weak / Negligible
+OrderStatus_Pending,ReferralSource_Referral,-0.0423,0.0423,Very Weak / Negligible
+Log_TotalPrice,OrderStatus_Returned,-0.0421,0.0421,Very Weak / Negligible
+Quantity,PaymentMethod_Online,-0.0418,0.0418,Very Weak / Negligible
+CouponCode_SAVE10,ReferralSource_Google,0.0418,0.0418,Very Weak / Negligible
+CouponCode_SAVE10,ReferralSource_Facebook,-0.0416,0.0416,Very Weak / Negligible
+Quantity,HasCoupon,-0.0416,0.0416,Very Weak / Negligible
+Quantity,PaymentMethod_Cash,0.0416,0.0416,Very Weak / Negligible
+Quantity,CouponCode_NO_COUPON,0.0416,0.0416,Very Weak / Negligible
+UnitPrice,CouponCode_FREESHIP,0.0412,0.0412,Very Weak / Negligible
+Product_Monitor,ReferralSource_Google,-0.0409,0.0409,Very Weak / Negligible
+HasCoupon,ReferralSource_Facebook,-0.0403,0.0403,Very Weak / Negligible
+CouponCode_NO_COUPON,ReferralSource_Facebook,0.0403,0.0403,Very Weak / Negligible
+Product_Laptop,OrderStatus_Delivered,0.0403,0.0403,Very Weak / Negligible
+OrderStatus_Cancelled,ReferralSource_Google,0.0399,0.0399,Very Weak / Negligible
+OrderStatus_Delivered,CouponCode_SAVE10,0.0394,0.0394,Very Weak / Negligible
+PaymentMethod_Gift Card,OrderStatus_Delivered,-0.0391,0.0391,Very Weak / Negligible
+Product_Desk,PaymentMethod_Gift Card,0.039,0.039,Very Weak / Negligible
+Product_Printer,OrderStatus_Shipped,0.0385,0.0385,Very Weak / Negligible
+Quantity,OrderStatus_Pending,0.0384,0.0384,Very Weak / Negligible
+Product_Tablet,OrderStatus_Delivered,-0.0383,0.0383,Very Weak / Negligible
+PaymentMethod_Online,CouponCode_FREESHIP,-0.0383,0.0383,Very Weak / Negligible
+TotalPrice,Product_Phone,-0.0383,0.0383,Very Weak / Negligible
+Product_Desk,ReferralSource_Email,-0.0378,0.0378,Very Weak / Negligible
+Product_Printer,CouponCode_SAVE10,0.0375,0.0375,Very Weak / Negligible
+Product_Monitor,ReferralSource_Facebook,0.0374,0.0374,Very Weak / Negligible
+Order_Month,OrderStatus_Shipped,0.0372,0.0372,Very Weak / Negligible
+CouponCode_WINTER15,ReferralSource_Google,-0.0371,0.0371,Very Weak / Negligible
+UnitPrice,ReferralSource_Facebook,0.0369,0.0369,Very Weak / Negligible
+UnitPrice,Product_Phone,0.0369,0.0369,Very Weak / Negligible
+OrderStatus_Delivered,CouponCode_NO_COUPON,-0.0362,0.0362,Very Weak / Negligible
+HasCoupon,OrderStatus_Delivered,0.0362,0.0362,Very Weak / Negligible
+PaymentMethod_Gift Card,ReferralSource_Email,-0.0361,0.0361,Very Weak / Negligible
+UnitPrice,CouponCode_NO_COUPON,-0.036,0.036,Very Weak / Negligible
+UnitPrice,HasCoupon,0.036,0.036,Very Weak / Negligible
+UnitPrice,ReferralSource_Email,-0.0358,0.0358,Very Weak / Negligible
+Product_Laptop,PaymentMethod_Online,-0.0358,0.0358,Very Weak / Negligible
+Product_Phone,ReferralSource_Facebook,-0.0356,0.0356,Very Weak / Negligible
+Product_Tablet,OrderStatus_Returned,0.0356,0.0356,Very Weak / Negligible
+Quantity,ReferralSource_Referral,-0.035,0.035,Very Weak / Negligible
+OrderStatus_Cancelled,ReferralSource_Email,0.0349,0.0349,Very Weak / Negligible
+Product_Printer,OrderStatus_Delivered,-0.0345,0.0345,Very Weak / Negligible
+Product_Chair,OrderStatus_Pending,0.0344,0.0344,Very Weak / Negligible
+Product_Laptop,PaymentMethod_Credit Card,-0.0343,0.0343,Very Weak / Negligible
+Order_Month,CouponCode_SAVE10,0.0342,0.0342,Very Weak / Negligible
+PaymentMethod_Debit Card,OrderStatus_Shipped,-0.0342,0.0342,Very Weak / Negligible
+OrderStatus_Returned,ReferralSource_Google,-0.034,0.034,Very Weak / Negligible
+TotalPrice,Product_Desk,-0.034,0.034,Very Weak / Negligible
+Quantity,PaymentMethod_Credit Card,0.0339,0.0339,Very Weak / Negligible
+Product_Printer,PaymentMethod_Gift Card,-0.0337,0.0337,Very Weak / Negligible
+Quantity,CouponCode_WINTER15,-0.0334,0.0334,Very Weak / Negligible
+UnitPrice,ReferralSource_Referral,0.0334,0.0334,Very Weak / Negligible
+PaymentMethod_Credit Card,ReferralSource_Instagram,-0.0333,0.0333,Very Weak / Negligible
+PaymentMethod_Online,OrderStatus_Shipped,0.0331,0.0331,Very Weak / Negligible
+Quantity,OrderStatus_Cancelled,0.0329,0.0329,Very Weak / Negligible
+PaymentMethod_Cash,OrderStatus_Returned,0.0325,0.0325,Very Weak / Negligible
+Order_Month,Log_TotalPrice,-0.0324,0.0324,Very Weak / Negligible
+TotalPrice,OrderStatus_Cancelled,0.0323,0.0323,Very Weak / Negligible
+OrderStatus_Pending,ReferralSource_Facebook,-0.0322,0.0322,Very Weak / Negligible
+ItemsInCart,ReferralSource_Facebook,-0.0322,0.0322,Very Weak / Negligible
+TotalPrice,PaymentMethod_Debit Card,-0.0312,0.0312,Very Weak / Negligible
+Product_Tablet,CouponCode_SAVE10,-0.0311,0.0311,Very Weak / Negligible
+Product_Desk,CouponCode_SAVE10,-0.0309,0.0309,Very Weak / Negligible
+PaymentMethod_Credit Card,OrderStatus_Shipped,-0.0309,0.0309,Very Weak / Negligible
+Product_Monitor,CouponCode_FREESHIP,-0.0306,0.0306,Very Weak / Negligible
+PaymentMethod_Credit Card,CouponCode_NO_COUPON,-0.0301,0.0301,Very Weak / Negligible
+HasCoupon,PaymentMethod_Credit Card,0.0301,0.0301,Very Weak / Negligible
+OrderStatus_Cancelled,CouponCode_NO_COUPON,-0.0299,0.0299,Very Weak / Negligible
+HasCoupon,OrderStatus_Cancelled,0.0299,0.0299,Very Weak / Negligible
+PaymentMethod_Online,ReferralSource_Referral,-0.0299,0.0299,Very Weak / Negligible
+PaymentMethod_Gift Card,ReferralSource_Referral,0.0297,0.0297,Very Weak / Negligible
+OrderStatus_Cancelled,CouponCode_WINTER15,0.0295,0.0295,Very Weak / Negligible
+Product_Laptop,OrderStatus_Shipped,-0.0292,0.0292,Very Weak / Negligible
+Product_Tablet,OrderStatus_Shipped,0.0292,0.0292,Very Weak / Negligible
+Quantity,PaymentMethod_Debit Card,-0.0291,0.0291,Very Weak / Negligible
+Order_Month,PaymentMethod_Online,-0.029,0.029,Very Weak / Negligible
+Product_Desk,ReferralSource_Google,0.029,0.029,Very Weak / Negligible
+OrderStatus_Cancelled,ReferralSource_Facebook,-0.0288,0.0288,Very Weak / Negligible
+Product_Phone,PaymentMethod_Credit Card,0.0286,0.0286,Very Weak / Negligible
+TotalPrice,Product_Laptop,0.0283,0.0283,Very Weak / Negligible
+Product_Monitor,CouponCode_NO_COUPON,0.028,0.028,Very Weak / Negligible
+HasCoupon,Product_Monitor,-0.028,0.028,Very Weak / Negligible
+Product_Chair,PaymentMethod_Credit Card,-0.0279,0.0279,Very Weak / Negligible
+Order_Month,OrderStatus_Delivered,0.0279,0.0279,Very Weak / Negligible
+TotalPrice,Order_Month,-0.0278,0.0278,Very Weak / Negligible
+PaymentMethod_Cash,ReferralSource_Facebook,0.0277,0.0277,Very Weak / Negligible
+Product_Printer,CouponCode_WINTER15,-0.0274,0.0274,Very Weak / Negligible
+PaymentMethod_Debit Card,ReferralSource_Facebook,-0.0273,0.0273,Very Weak / Negligible
+PaymentMethod_Credit Card,OrderStatus_Cancelled,0.0272,0.0272,Very Weak / Negligible
+OrderStatus_Pending,CouponCode_SAVE10,0.0271,0.0271,Very Weak / Negligible
+UnitPrice,ReferralSource_Google,-0.027,0.027,Very Weak / Negligible
+Product_Printer,ReferralSource_Google,0.027,0.027,Very Weak / Negligible
+Order_Month,Product_Laptop,0.0269,0.0269,Very Weak / Negligible
+PaymentMethod_Cash,OrderStatus_Shipped,-0.0269,0.0269,Very Weak / Negligible
+Log_TotalPrice,Product_Chair,0.0267,0.0267,Very Weak / Negligible
+Product_Desk,OrderStatus_Pending,0.0266,0.0266,Very Weak / Negligible
+CouponCode_NO_COUPON,ReferralSource_Instagram,-0.0264,0.0264,Very Weak / Negligible
+Product_Phone,ReferralSource_Referral,0.0264,0.0264,Very Weak / Negligible
+HasCoupon,ReferralSource_Instagram,0.0264,0.0264,Very Weak / Negligible
+PaymentMethod_Online,CouponCode_SAVE10,-0.0261,0.0261,Very Weak / Negligible
+UnitPrice,Order_Month,-0.0261,0.0261,Very Weak / Negligible
+PaymentMethod_Debit Card,ReferralSource_Instagram,-0.026,0.026,Very Weak / Negligible
+UnitPrice,PaymentMethod_Cash,-0.026,0.026,Very Weak / Negligible
+ItemsInCart,ReferralSource_Email,0.0259,0.0259,Very Weak / Negligible
+ItemsInCart,Product_Laptop,-0.0259,0.0259,Very Weak / Negligible
+TotalPrice,ReferralSource_Facebook,0.0259,0.0259,Very Weak / Negligible
+Order_Month,Product_Chair,0.0259,0.0259,Very Weak / Negligible
+Product_Phone,PaymentMethod_Gift Card,0.0258,0.0258,Very Weak / Negligible
+Product_Tablet,PaymentMethod_Gift Card,-0.0256,0.0256,Very Weak / Negligible
+Order_Month,ReferralSource_Facebook,0.0255,0.0255,Very Weak / Negligible
+ItemsInCart,CouponCode_WINTER15,-0.0252,0.0252,Very Weak / Negligible
+CouponCode_FREESHIP,ReferralSource_Instagram,0.0251,0.0251,Very Weak / Negligible
+ItemsInCart,OrderStatus_Returned,-0.0251,0.0251,Very Weak / Negligible
+Product_Desk,ReferralSource_Instagram,0.025,0.025,Very Weak / Negligible
+Product_Laptop,OrderStatus_Pending,-0.0248,0.0248,Very Weak / Negligible
+CouponCode_WINTER15,ReferralSource_Email,0.0247,0.0247,Very Weak / Negligible
+Product_Monitor,CouponCode_WINTER15,0.0246,0.0246,Very Weak / Negligible
+Product_Printer,CouponCode_NO_COUPON,-0.0245,0.0245,Very Weak / Negligible
+HasCoupon,Product_Printer,0.0245,0.0245,Very Weak / Negligible
+Product_Laptop,ReferralSource_Referral,0.0244,0.0244,Very Weak / Negligible
+PaymentMethod_Gift Card,OrderStatus_Returned,0.0244,0.0244,Very Weak / Negligible
+Product_Tablet,CouponCode_WINTER15,0.0242,0.0242,Very Weak / Negligible
+Log_TotalPrice,PaymentMethod_Debit Card,-0.0242,0.0242,Very Weak / Negligible
+CouponCode_FREESHIP,ReferralSource_Referral,-0.024,0.024,Very Weak / Negligible
+UnitPrice,Product_Tablet,0.0239,0.0239,Very Weak / Negligible
+PaymentMethod_Gift Card,CouponCode_SAVE10,-0.0239,0.0239,Very Weak / Negligible
+TotalPrice,PaymentMethod_Online,-0.0238,0.0238,Very Weak / Negligible
+PaymentMethod_Online,ReferralSource_Email,-0.0237,0.0237,Very Weak / Negligible
+Log_TotalPrice,CouponCode_FREESHIP,0.0236,0.0236,Very Weak / Negligible
+CouponCode_WINTER15,ReferralSource_Instagram,0.0235,0.0235,Very Weak / Negligible
+OrderStatus_Shipped,ReferralSource_Facebook,0.0233,0.0233,Very Weak / Negligible
+Log_TotalPrice,Product_Laptop,0.0233,0.0233,Very Weak / Negligible
+Product_Desk,PaymentMethod_Credit Card,0.0232,0.0232,Very Weak / Negligible
+Product_Tablet,PaymentMethod_Credit Card,-0.0231,0.0231,Very Weak / Negligible
+TotalPrice,Product_Chair,0.023,0.023,Very Weak / Negligible
+CouponCode_FREESHIP,ReferralSource_Google,-0.023,0.023,Very Weak / Negligible
+Product_Chair,OrderStatus_Shipped,-0.0228,0.0228,Very Weak / Negligible
+OrderStatus_Pending,CouponCode_WINTER15,-0.0228,0.0228,Very Weak / Negligible
+Product_Monitor,ReferralSource_Instagram,0.0226,0.0226,Very Weak / Negligible
+Product_Chair,ReferralSource_Email,0.0226,0.0226,Very Weak / Negligible
+CouponCode_SAVE10,ReferralSource_Instagram,-0.0225,0.0225,Very Weak / Negligible
+PaymentMethod_Debit Card,OrderStatus_Cancelled,-0.0225,0.0225,Very Weak / Negligible
+Product_Printer,PaymentMethod_Cash,0.0225,0.0225,Very Weak / Negligible
+Log_TotalPrice,ReferralSource_Facebook,0.0224,0.0224,Very Weak / Negligible
+PaymentMethod_Gift Card,ReferralSource_Instagram,0.0224,0.0224,Very Weak / Negligible
+PaymentMethod_Credit Card,ReferralSource_Email,0.022,0.022,Very Weak / Negligible
+Product_Monitor,CouponCode_SAVE10,-0.022,0.022,Very Weak / Negligible
+Log_TotalPrice,Product_Desk,-0.0218,0.0218,Very Weak / Negligible
+Product_Printer,PaymentMethod_Credit Card,0.0218,0.0218,Very Weak / Negligible
+PaymentMethod_Debit Card,CouponCode_FREESHIP,-0.0217,0.0217,Very Weak / Negligible
+PaymentMethod_Online,ReferralSource_Instagram,0.0213,0.0213,Very Weak / Negligible
+PaymentMethod_Cash,CouponCode_SAVE10,0.0212,0.0212,Very Weak / Negligible
+PaymentMethod_Credit Card,CouponCode_SAVE10,0.0209,0.0209,Very Weak / Negligible
+Log_TotalPrice,ReferralSource_Email,-0.0206,0.0206,Very Weak / Negligible
+Order_Month,Product_Monitor,-0.0205,0.0205,Very Weak / Negligible
+Order_Month,PaymentMethod_Cash,0.0205,0.0205,Very Weak / Negligible
+Product_Chair,PaymentMethod_Debit Card,-0.0203,0.0203,Very Weak / Negligible
+PaymentMethod_Online,OrderStatus_Pending,-0.0202,0.0202,Very Weak / Negligible
+PaymentMethod_Credit Card,ReferralSource_Referral,0.0201,0.0201,Very Weak / Negligible
+UnitPrice,PaymentMethod_Gift Card,0.02,0.02,Very Weak / Negligible
+UnitPrice,PaymentMethod_Credit Card,0.02,0.02,Very Weak / Negligible
+Product_Laptop,OrderStatus_Returned,0.0199,0.0199,Very Weak / Negligible
+OrderStatus_Cancelled,ReferralSource_Referral,0.0198,0.0198,Very Weak / Negligible
+Order_Month,PaymentMethod_Debit Card,0.0197,0.0197,Very Weak / Negligible
+Product_Monitor,OrderStatus_Pending,-0.0195,0.0195,Very Weak / Negligible
+ItemsInCart,HasCoupon,-0.0193,0.0193,Very Weak / Negligible
+ItemsInCart,ReferralSource_Google,0.0193,0.0193,Very Weak / Negligible
+ItemsInCart,CouponCode_NO_COUPON,0.0193,0.0193,Very Weak / Negligible
+Log_TotalPrice,CouponCode_WINTER15,-0.0193,0.0193,Very Weak / Negligible
+HasCoupon,Order_Month,0.0191,0.0191,Very Weak / Negligible
+Order_Month,CouponCode_NO_COUPON,-0.0191,0.0191,Very Weak / Negligible
+Product_Chair,ReferralSource_Facebook,0.019,0.019,Very Weak / Negligible
+Product_Tablet,OrderStatus_Cancelled,-0.019,0.019,Very Weak / Negligible
+Product_Printer,ReferralSource_Email,0.0189,0.0189,Very Weak / Negligible
+CouponCode_NO_COUPON,ReferralSource_Google,0.0188,0.0188,Very Weak / Negligible
+HasCoupon,ReferralSource_Google,-0.0188,0.0188,Very Weak / Negligible
+Product_Phone,CouponCode_FREESHIP,0.0187,0.0187,Very Weak / Negligible
+TotalPrice,ReferralSource_Referral,-0.0186,0.0186,Very Weak / Negligible
+UnitPrice,PaymentMethod_Debit Card,-0.0185,0.0185,Very Weak / Negligible
+UnitPrice,OrderStatus_Shipped,0.0185,0.0185,Very Weak / Negligible
+ItemsInCart,ReferralSource_Referral,-0.0185,0.0185,Very Weak / Negligible
+Quantity,OrderStatus_Shipped,-0.0183,0.0183,Very Weak / Negligible
+ItemsInCart,Order_Month,-0.0182,0.0182,Very Weak / Negligible
+Order_Month,PaymentMethod_Credit Card,-0.0181,0.0181,Very Weak / Negligible
+Product_Tablet,ReferralSource_Facebook,-0.0179,0.0179,Very Weak / Negligible
+Product_Laptop,ReferralSource_Email,-0.0178,0.0178,Very Weak / Negligible
+PaymentMethod_Cash,OrderStatus_Pending,0.0177,0.0177,Very Weak / Negligible
+Product_Desk,OrderStatus_Returned,-0.0177,0.0177,Very Weak / Negligible
+PaymentMethod_Cash,ReferralSource_Google,-0.0175,0.0175,Very Weak / Negligible
+Product_Phone,OrderStatus_Pending,-0.0175,0.0175,Very Weak / Negligible
+OrderStatus_Pending,ReferralSource_Email,-0.0174,0.0174,Very Weak / Negligible
+Order_Month,OrderStatus_Returned,-0.0171,0.0171,Very Weak / Negligible
+TotalPrice,OrderStatus_Pending,0.0169,0.0169,Very Weak / Negligible
+PaymentMethod_Debit Card,OrderStatus_Returned,0.0169,0.0169,Very Weak / Negligible
+OrderStatus_Shipped,CouponCode_NO_COUPON,0.0167,0.0167,Very Weak / Negligible
+HasCoupon,OrderStatus_Shipped,-0.0167,0.0167,Very Weak / Negligible
+PaymentMethod_Cash,ReferralSource_Email,-0.0165,0.0165,Very Weak / Negligible
+ItemsInCart,Product_Desk,0.0163,0.0163,Very Weak / Negligible
+OrderStatus_Returned,CouponCode_FREESHIP,-0.0161,0.0161,Very Weak / Negligible
+PaymentMethod_Online,ReferralSource_Google,0.0161,0.0161,Very Weak / Negligible
+Product_Phone,OrderStatus_Shipped,-0.0159,0.0159,Very Weak / Negligible
+HasCoupon,PaymentMethod_Debit Card,-0.0157,0.0157,Very Weak / Negligible
+PaymentMethod_Debit Card,CouponCode_NO_COUPON,0.0157,0.0157,Very Weak / Negligible
+Product_Tablet,ReferralSource_Email,0.0156,0.0156,Very Weak / Negligible
+OrderStatus_Shipped,CouponCode_WINTER15,-0.0156,0.0156,Very Weak / Negligible
+CouponCode_SAVE10,ReferralSource_Referral,0.0156,0.0156,Very Weak / Negligible
+Product_Printer,OrderStatus_Cancelled,-0.0155,0.0155,Very Weak / Negligible
+PaymentMethod_Online,ReferralSource_Facebook,0.0154,0.0154,Very Weak / Negligible
+Product_Laptop,ReferralSource_Instagram,0.0153,0.0153,Very Weak / Negligible
+Product_Laptop,PaymentMethod_Debit Card,0.0153,0.0153,Very Weak / Negligible
+Product_Desk,CouponCode_NO_COUPON,-0.0152,0.0152,Very Weak / Negligible
+HasCoupon,Product_Desk,0.0152,0.0152,Very Weak / Negligible
+Product_Desk,ReferralSource_Referral,-0.0151,0.0151,Very Weak / Negligible
+Log_TotalPrice,OrderStatus_Shipped,0.0151,0.0151,Very Weak / Negligible
+Quantity,Order_Month,-0.0151,0.0151,Very Weak / Negligible
+PaymentMethod_Gift Card,CouponCode_WINTER15,0.015,0.015,Very Weak / Negligible
+Product_Printer,CouponCode_FREESHIP,0.0148,0.0148,Very Weak / Negligible
+Product_Monitor,OrderStatus_Returned,0.0147,0.0147,Very Weak / Negligible
+Product_Chair,ReferralSource_Instagram,0.0147,0.0147,Very Weak / Negligible
+Quantity,Product_Printer,0.0146,0.0146,Very Weak / Negligible
+PaymentMethod_Cash,ReferralSource_Instagram,0.0146,0.0146,Very Weak / Negligible
+Quantity,UnitPrice,0.0146,0.0146,Very Weak / Negligible
+PaymentMethod_Gift Card,ReferralSource_Facebook,-0.0146,0.0146,Very Weak / Negligible
+Product_Chair,PaymentMethod_Cash,-0.0145,0.0145,Very Weak / Negligible
+Quantity,OrderStatus_Delivered,0.0143,0.0143,Very Weak / Negligible
+Order_Month,CouponCode_WINTER15,-0.0143,0.0143,Very Weak / Negligible
+ItemsInCart,OrderStatus_Cancelled,0.0142,0.0142,Very Weak / Negligible
+Log_TotalPrice,Product_Tablet,-0.014,0.014,Very Weak / Negligible
+Quantity,ReferralSource_Email,0.0139,0.0139,Very Weak / Negligible
+OrderStatus_Returned,CouponCode_WINTER15,0.0139,0.0139,Very Weak / Negligible
+Product_Monitor,PaymentMethod_Gift Card,-0.0139,0.0139,Very Weak / Negligible
+HasCoupon,ReferralSource_Referral,-0.0139,0.0139,Very Weak / Negligible
+TotalPrice,Product_Printer,0.0139,0.0139,Very Weak / Negligible
+CouponCode_NO_COUPON,ReferralSource_Referral,0.0139,0.0139,Very Weak / Negligible
+HasCoupon,Log_TotalPrice,0.0138,0.0138,Very Weak / Negligible
+Log_TotalPrice,CouponCode_NO_COUPON,-0.0138,0.0138,Very Weak / Negligible
+PaymentMethod_Cash,CouponCode_WINTER15,-0.0138,0.0138,Very Weak / Negligible
+Product_Monitor,PaymentMethod_Credit Card,0.0136,0.0136,Very Weak / Negligible
+Log_TotalPrice,PaymentMethod_Online,-0.0136,0.0136,Very Weak / Negligible
+Product_Tablet,ReferralSource_Instagram,0.0135,0.0135,Very Weak / Negligible
+Product_Chair,CouponCode_FREESHIP,-0.013,0.013,Very Weak / Negligible
+CouponCode_FREESHIP,ReferralSource_Email,0.013,0.013,Very Weak / Negligible
+Log_TotalPrice,PaymentMethod_Cash,-0.0128,0.0128,Very Weak / Negligible
+ItemsInCart,Product_Monitor,0.0127,0.0127,Very Weak / Negligible
+OrderStatus_Delivered,ReferralSource_Google,-0.0126,0.0126,Very Weak / Negligible
+OrderStatus_Returned,ReferralSource_Email,-0.0125,0.0125,Very Weak / Negligible
+Log_TotalPrice,ReferralSource_Google,-0.0124,0.0124,Very Weak / Negligible
+TotalPrice,CouponCode_WINTER15,-0.0124,0.0124,Very Weak / Negligible
+PaymentMethod_Cash,OrderStatus_Delivered,-0.0123,0.0123,Very Weak / Negligible
+Log_TotalPrice,ReferralSource_Referral,0.0123,0.0123,Very Weak / Negligible
+Quantity,Product_Desk,0.0122,0.0122,Very Weak / Negligible
+TotalPrice,CouponCode_FREESHIP,0.0121,0.0121,Very Weak / Negligible
+Order_Month,Product_Tablet,-0.012,0.012,Very Weak / Negligible
+ItemsInCart,CouponCode_FREESHIP,0.0118,0.0118,Very Weak / Negligible
+Log_TotalPrice,OrderStatus_Delivered,0.0118,0.0118,Very Weak / Negligible
+Product_Printer,PaymentMethod_Debit Card,-0.0118,0.0118,Very Weak / Negligible
+Product_Monitor,ReferralSource_Email,-0.0117,0.0117,Very Weak / Negligible
+Product_Chair,ReferralSource_Referral,-0.0117,0.0117,Very Weak / Negligible
+HasCoupon,Product_Chair,-0.0116,0.0116,Very Weak / Negligible
+Product_Laptop,CouponCode_WINTER15,-0.0116,0.0116,Very Weak / Negligible
+Product_Chair,CouponCode_NO_COUPON,0.0116,0.0116,Very Weak / Negligible
+ItemsInCart,PaymentMethod_Credit Card,0.0115,0.0115,Very Weak / Negligible
+TotalPrice,Product_Monitor,0.0114,0.0114,Very Weak / Negligible
+PaymentMethod_Cash,OrderStatus_Cancelled,-0.0114,0.0114,Very Weak / Negligible
+Product_Laptop,ReferralSource_Facebook,-0.0113,0.0113,Very Weak / Negligible
+Product_Chair,PaymentMethod_Gift Card,0.0112,0.0112,Very Weak / Negligible
+Log_TotalPrice,Product_Phone,-0.0111,0.0111,Very Weak / Negligible
+Product_Desk,PaymentMethod_Cash,-0.011,0.011,Very Weak / Negligible
+OrderStatus_Delivered,ReferralSource_Instagram,0.011,0.011,Very Weak / Negligible
+Quantity,CouponCode_FREESHIP,-0.0109,0.0109,Very Weak / Negligible
+PaymentMethod_Gift Card,OrderStatus_Cancelled,0.0109,0.0109,Very Weak / Negligible
+PaymentMethod_Credit Card,OrderStatus_Delivered,-0.0109,0.0109,Very Weak / Negligible
+PaymentMethod_Debit Card,ReferralSource_Referral,-0.0104,0.0104,Very Weak / Negligible
+Product_Laptop,ReferralSource_Google,-0.0103,0.0103,Very Weak / Negligible
+OrderStatus_Delivered,ReferralSource_Facebook,-0.0102,0.0102,Very Weak / Negligible
+Log_TotalPrice,OrderStatus_Pending,0.0101,0.0101,Very Weak / Negligible
+Quantity,ReferralSource_Instagram,0.0101,0.0101,Very Weak / Negligible
+UnitPrice,Product_Printer,-0.01,0.01,Very Weak / Negligible
+TotalPrice,PaymentMethod_Gift Card,0.01,0.01,Very Weak / Negligible
+Product_Tablet,PaymentMethod_Cash,-0.0098,0.0098,Very Weak / Negligible
+Order_Month,Product_Phone,-0.0098,0.0098,Very Weak / Negligible
+HasCoupon,OrderStatus_Pending,0.0097,0.0097,Very Weak / Negligible
+OrderStatus_Pending,CouponCode_NO_COUPON,-0.0097,0.0097,Very Weak / Negligible
+Product_Printer,ReferralSource_Facebook,0.0096,0.0096,Very Weak / Negligible
+OrderStatus_Shipped,ReferralSource_Google,0.0095,0.0095,Very Weak / Negligible
+PaymentMethod_Credit Card,CouponCode_FREESHIP,0.0094,0.0094,Very Weak / Negligible
+PaymentMethod_Credit Card,OrderStatus_Pending,0.0094,0.0094,Very Weak / Negligible
+Log_TotalPrice,CouponCode_SAVE10,0.0093,0.0093,Very Weak / Negligible
+Product_Phone,ReferralSource_Email,0.0092,0.0092,Very Weak / Negligible
+Product_Phone,OrderStatus_Cancelled,-0.0092,0.0092,Very Weak / Negligible
+ItemsInCart,OrderStatus_Pending,0.0092,0.0092,Very Weak / Negligible
+Product_Chair,CouponCode_WINTER15,0.0092,0.0092,Very Weak / Negligible
+OrderStatus_Returned,ReferralSource_Referral,-0.009,0.009,Very Weak / Negligible
+TotalPrice,ReferralSource_Google,-0.009,0.009,Very Weak / Negligible
+Product_Printer,ReferralSource_Referral,-0.0089,0.0089,Very Weak / Negligible
+PaymentMethod_Debit Card,OrderStatus_Delivered,-0.0089,0.0089,Very Weak / Negligible
+UnitPrice,OrderStatus_Delivered,-0.0088,0.0088,Very Weak / Negligible
+PaymentMethod_Debit Card,CouponCode_SAVE10,0.0085,0.0085,Very Weak / Negligible
+UnitPrice,OrderStatus_Returned,-0.0085,0.0085,Very Weak / Negligible
+OrderStatus_Returned,ReferralSource_Instagram,0.0085,0.0085,Very Weak / Negligible
+OrderStatus_Cancelled,CouponCode_FREESHIP,0.0084,0.0084,Very Weak / Negligible
+Product_Tablet,PaymentMethod_Debit Card,0.0083,0.0083,Very Weak / Negligible
+PaymentMethod_Cash,ReferralSource_Referral,-0.008,0.008,Very Weak / Negligible
+TotalPrice,CouponCode_SAVE10,0.0079,0.0079,Very Weak / Negligible
+Product_Laptop,CouponCode_NO_COUPON,0.0079,0.0079,Very Weak / Negligible
+Product_Tablet,OrderStatus_Pending,-0.0079,0.0079,Very Weak / Negligible
+HasCoupon,Product_Laptop,-0.0079,0.0079,Very Weak / Negligible
+Product_Chair,CouponCode_SAVE10,-0.0078,0.0078,Very Weak / Negligible
+TotalPrice,CouponCode_NO_COUPON,-0.0077,0.0077,Very Weak / Negligible
+Order_Month,PaymentMethod_Gift Card,0.0077,0.0077,Very Weak / Negligible
+TotalPrice,HasCoupon,0.0077,0.0077,Very Weak / Negligible
+OrderStatus_Cancelled,CouponCode_SAVE10,-0.0076,0.0076,Very Weak / Negligible
+Product_Chair,OrderStatus_Delivered,-0.0075,0.0075,Very Weak / Negligible
+CouponCode_FREESHIP,ReferralSource_Facebook,0.0074,0.0074,Very Weak / Negligible
+PaymentMethod_Debit Card,ReferralSource_Google,0.0074,0.0074,Very Weak / Negligible
+Product_Printer,OrderStatus_Pending,0.0073,0.0073,Very Weak / Negligible
+CouponCode_WINTER15,ReferralSource_Facebook,-0.0073,0.0073,Very Weak / Negligible
+Product_Monitor,ReferralSource_Referral,-0.0072,0.0072,Very Weak / Negligible
+ItemsInCart,PaymentMethod_Debit Card,-0.007,0.007,Very Weak / Negligible
+Product_Tablet,CouponCode_FREESHIP,0.007,0.007,Very Weak / Negligible
+Product_Desk,PaymentMethod_Debit Card,0.0069,0.0069,Very Weak / Negligible
+CouponCode_SAVE10,ReferralSource_Email,0.0068,0.0068,Very Weak / Negligible
+Product_Phone,OrderStatus_Returned,-0.0068,0.0068,Very Weak / Negligible
+Product_Tablet,ReferralSource_Referral,-0.0067,0.0067,Very Weak / Negligible
+Product_Phone,CouponCode_NO_COUPON,-0.0066,0.0066,Very Weak / Negligible
+ItemsInCart,CouponCode_SAVE10,-0.0066,0.0066,Very Weak / Negligible
+HasCoupon,Product_Phone,0.0066,0.0066,Very Weak / Negligible
+TotalPrice,Product_Tablet,-0.0063,0.0063,Very Weak / Negligible
+Product_Monitor,OrderStatus_Cancelled,0.0062,0.0062,Very Weak / Negligible
+Product_Monitor,PaymentMethod_Online,-0.0062,0.0062,Very Weak / Negligible
+Order_Month,ReferralSource_Google,-0.0061,0.0061,Very Weak / Negligible
+Product_Laptop,OrderStatus_Cancelled,-0.0061,0.0061,Very Weak / Negligible
+Quantity,ReferralSource_Google,0.006,0.006,Very Weak / Negligible
+OrderStatus_Delivered,CouponCode_WINTER15,-0.006,0.006,Very Weak / Negligible
+TotalPrice,ReferralSource_Instagram,0.0059,0.0059,Very Weak / Negligible
+Log_TotalPrice,PaymentMethod_Gift Card,0.0059,0.0059,Very Weak / Negligible
+Log_TotalPrice,OrderStatus_Cancelled,0.0058,0.0058,Very Weak / Negligible
+Order_Month,Product_Desk,-0.0058,0.0058,Very Weak / Negligible
+Order_Month,Product_Printer,-0.0056,0.0056,Very Weak / Negligible
+OrderStatus_Pending,CouponCode_FREESHIP,0.0056,0.0056,Very Weak / Negligible
+Product_Tablet,ReferralSource_Google,-0.0055,0.0055,Very Weak / Negligible
+PaymentMethod_Cash,CouponCode_FREESHIP,-0.0055,0.0055,Very Weak / Negligible
+ItemsInCart,Product_Printer,0.0053,0.0053,Very Weak / Negligible
+PaymentMethod_Credit Card,ReferralSource_Google,-0.0052,0.0052,Very Weak / Negligible
+CouponCode_WINTER15,ReferralSource_Referral,-0.0051,0.0051,Very Weak / Negligible
+UnitPrice,ReferralSource_Instagram,-0.005,0.005,Very Weak / Negligible
+UnitPrice,PaymentMethod_Online,0.0049,0.0049,Very Weak / Negligible
+UnitPrice,Product_Monitor,0.0045,0.0045,Very Weak / Negligible
+Product_Desk,OrderStatus_Delivered,-0.0044,0.0044,Very Weak / Negligible
+TotalPrice,ReferralSource_Email,-0.0043,0.0043,Very Weak / Negligible
+Product_Printer,OrderStatus_Returned,0.0043,0.0043,Very Weak / Negligible
+PaymentMethod_Credit Card,OrderStatus_Returned,0.0043,0.0043,Very Weak / Negligible
+Product_Laptop,CouponCode_SAVE10,0.0043,0.0043,Very Weak / Negligible
+UnitPrice,CouponCode_WINTER15,-0.004,0.004,Very Weak / Negligible
+Log_TotalPrice,Product_Monitor,-0.004,0.004,Very Weak / Negligible
+ItemsInCart,ReferralSource_Instagram,0.0039,0.0039,Very Weak / Negligible
+Order_Month,OrderStatus_Pending,0.0039,0.0039,Very Weak / Negligible
+Quantity,PaymentMethod_Gift Card,-0.0038,0.0038,Very Weak / Negligible
+TotalPrice,OrderStatus_Shipped,-0.0038,0.0038,Very Weak / Negligible
+PaymentMethod_Online,OrderStatus_Cancelled,-0.0037,0.0037,Very Weak / Negligible
+OrderStatus_Delivered,CouponCode_FREESHIP,0.0036,0.0036,Very Weak / Negligible
+Product_Desk,CouponCode_FREESHIP,0.0036,0.0036,Very Weak / Negligible
+Product_Monitor,PaymentMethod_Cash,0.0035,0.0035,Very Weak / Negligible
+Quantity,ReferralSource_Facebook,0.0035,0.0035,Very Weak / Negligible
+Product_Phone,PaymentMethod_Online,-0.0033,0.0033,Very Weak / Negligible
+ItemsInCart,Product_Tablet,0.0033,0.0033,Very Weak / Negligible
+OrderStatus_Pending,ReferralSource_Google,-0.0031,0.0031,Very Weak / Negligible
+Product_Monitor,PaymentMethod_Debit Card,0.003,0.003,Very Weak / Negligible
+UnitPrice,Product_Laptop,0.0027,0.0027,Very Weak / Negligible
+ItemsInCart,OrderStatus_Delivered,0.0027,0.0027,Very Weak / Negligible
+PaymentMethod_Credit Card,ReferralSource_Facebook,-0.0025,0.0025,Very Weak / Negligible
+TotalPrice,OrderStatus_Delivered,-0.0025,0.0025,Very Weak / Negligible
+Product_Desk,OrderStatus_Cancelled,-0.0025,0.0025,Very Weak / Negligible
+ItemsInCart,PaymentMethod_Gift Card,0.0023,0.0023,Very Weak / Negligible
+Product_Monitor,OrderStatus_Delivered,-0.0023,0.0023,Very Weak / Negligible
+PaymentMethod_Debit Card,CouponCode_WINTER15,-0.0022,0.0022,Very Weak / Negligible
+Quantity,CouponCode_SAVE10,0.0021,0.0021,Very Weak / Negligible
+UnitPrice,OrderStatus_Pending,-0.002,0.002,Very Weak / Negligible
+Product_Desk,OrderStatus_Shipped,-0.0018,0.0018,Very Weak / Negligible
+Product_Desk,ReferralSource_Facebook,-0.0018,0.0018,Very Weak / Negligible
+UnitPrice,Product_Chair,-0.0016,0.0016,Very Weak / Negligible
+HasCoupon,PaymentMethod_Cash,0.0016,0.0016,Very Weak / Negligible
+PaymentMethod_Cash,CouponCode_NO_COUPON,-0.0016,0.0016,Very Weak / Negligible
+UnitPrice,CouponCode_SAVE10,-0.0014,0.0014,Very Weak / Negligible
+OrderStatus_Shipped,CouponCode_FREESHIP,-0.0014,0.0014,Very Weak / Negligible
+TotalPrice,PaymentMethod_Cash,0.0014,0.0014,Very Weak / Negligible
+Product_Phone,PaymentMethod_Debit Card,-0.001,0.001,Very Weak / Negligible
+PaymentMethod_Online,CouponCode_WINTER15,0.001,0.001,Very Weak / Negligible
+PaymentMethod_Gift Card,ReferralSource_Google,-0.001,0.001,Very Weak / Negligible
+Product_Laptop,PaymentMethod_Gift Card,-0.001,0.001,Very Weak / Negligible
+UnitPrice,OrderStatus_Cancelled,0.0009,0.0009,Very Weak / Negligible
+ItemsInCart,OrderStatus_Shipped,-0.0009,0.0009,Very Weak / Negligible
+Product_Laptop,CouponCode_FREESHIP,-0.0007,0.0007,Very Weak / Negligible
+Log_TotalPrice,ReferralSource_Instagram,-0.0006,0.0006,Very Weak / Negligible
+UnitPrice,ItemsInCart,0.0006,0.0006,Very Weak / Negligible
+Product_Tablet,CouponCode_NO_COUPON,-0.0005,0.0005,Very Weak / Negligible
+Product_Printer,PaymentMethod_Online,0.0005,0.0005,Very Weak / Negligible
+Product_Monitor,OrderStatus_Shipped,0.0005,0.0005,Very Weak / Negligible
+HasCoupon,Product_Tablet,0.0005,0.0005,Very Weak / Negligible
+Quantity,Product_Monitor,-0.0003,0.0003,Very Weak / Negligible
+PaymentMethod_Credit Card,CouponCode_WINTER15,0.0003,0.0003,Very Weak / Negligible
+Order_Month,ReferralSource_Instagram,0.0002,0.0002,Very Weak / Negligible
+Order_Month,CouponCode_FREESHIP,-0.0002,0.0002,Very Weak / Negligible
+OrderStatus_Shipped,CouponCode_SAVE10,-0.0,0.0,Very Weak / Negligible
+Log_TotalPrice,Product_Printer,-0.0,0.0,Very Weak / Negligible
